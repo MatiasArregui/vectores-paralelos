@@ -2,44 +2,63 @@
 
 using namespace std;
 
+//En un curso de 4 alumnos se registraron las notas de sus exámenes y se deben procesar de acuerdo a lo siguiente :
+//a) Ingresar Nombre y Nota de cada alumno(almacenar los datos en dos vectores paralelos)
+//b) Realizar un listado que muestre los nombres, notas y condición del alumno.En la condición, colocar "Muy Bueno" 
+//si la nota es mayor o igual a 8, "Bueno" si la nota está entre 4 y 7, y colocar "Insuficiente" si la nota es inferior a 4.
+//c) Imprimir cuantos alumnos tienen la leyenda “Muy Bueno”.
 
-class productos {
+class alumnos {
 private:
-	float precios[5];
-	char nombres[5][40];
+	int notas[4];
+	char nombres[4][40];
 public:
-	void cargarProductos();
-	void mayorAlPrimero();
+	void cargaNotasNombre();
+	void listarCondiciones();
 };
-void productos::cargarProductos() {
-	for (int i = 0; i < 5; i++)
+void alumnos::cargaNotasNombre() {
+	for (int i = 0; i < 4; i++)
 	{
-		cout << "Ingrese el nombre del primer producto:\n";
+		cout << "Ingrese el nombre del alumno:\n";
 		cin.getline(nombres[i], 40);
-		cout << "\nIngrese el Valor del producto:\n";
-		cin >> precios[i];
+		cout << "\nIngrese la nota del alumno:\n";
+		cin >> notas[i];
 		cin.get();
 	}
 }
-void productos::mayorAlPrimero() {
-	int mayor = 0;
-	for (int i = 0; i < 5; i++)
+void alumnos::listarCondiciones() {
+	int muyBueno = 0;
+	for (int i = 0; i < 4; i++)
 	{
-		if (precios[0] < precios[i])
+		if (notas[i]>=8)
 		{
-			mayor += 1;
+			cout << "\nAlmuno: " << nombres[i];
+			cout << "\nNota: " << notas[i];
+			cout << "\nCondicion: Muy Bueno";
+			muyBueno += 1;
+		}
+		else
+		{
+			if (4<=notas[i]<=7)
+			{
+				cout << "\nAlmuno: " << nombres[i];
+				cout << "\nNota: " << notas[i];
+				cout << "\nCondicion: Bueno";
+			}
+			else
+			{
+				cout << "\nAlmuno: " << nombres[i];
+				cout << "\nNota: " << notas[i];
+				cout << "\nCondicion: Insuficiente";
+			}
 		}
 	}
-	cout << "\nEsta cantidad de productos son de mayor valor que el primero:" << mayor;
-	cin.get();
-	cin.get();
-}
-//Crear una clase que permita ingresar el nombre de 5 productos y sus respectivos precios
-//.Definir dos vectores paralelos.Mostrar cuantos productos tienen un precio mayor al primer producto ingresado.
-int main() {
-	productos p1;
-	p1.cargarProductos();
-	p1.mayorAlPrimero();
+	cout << "Alumnos que tienen una condicion Muy Buena: " << muyBueno;
 
+}
+int main() {
+	alumnos pAno1;
+	pAno1.cargaNotasNombre();
+	pAno1.listarCondiciones();
 	return 0;
 }
