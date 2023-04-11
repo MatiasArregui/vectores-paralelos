@@ -53,7 +53,7 @@ void alumnos::listarCondiciones() {
 			}
 		}
 	}
-	cout << "Alumnos que tienen una condicion Muy Buena: " << muyBueno;
+	cout << "\nAlumnos que tienen una condicion Muy Buena: " << muyBueno;
 
 }
 int main() {
